@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Gemini Chatbot - Dark Mode</title>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="header">
+            <h1>Berojgar Chatbot</h1>
+            <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
+        </div>
+        <div id="chat-box"></div>
+        <div id="loading-indicator" class="hidden">Thinking...</div>
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Type a message..." autofocus>
+            <button onclick="sendMessage()">➤</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+
+        async function sendMessage() {
+            const userInput = document.getElementById("user-input");
+            const chatBox = document.getElementById("chat-box");
+            const loadingIndicator = document.getElementById("loading-indicator");
+            const message = userInput.value.trim();
+            
+            if (message === "") return;
+            
+            // Append user message
+            chatBox.innerHTML += `<div class="message user-message"><strong>You:</strong> ${message}</div>`;
+            userInput.value = "";
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Show loading indicator
+            loadingIndicator.classList.remove("hidden");
+
+            // Send request to backend
+            const response = await fetch("/ask", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: message })
+            });
+
+            const data = await response.json();
+
+            // Hide loading indicator and show AI message
+            loadingIndicator.classList.add("hidden");
+            chatBox.innerHTML += `<div class="message ai-message"><strong>Gemini:</strong> ${data.response}</div>`;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // Send message on "Enter" key press
+        document.getElementById("user-input").addEventListener("keypress", function (e) {
+            if (e.key === "Enter") sendMessage();
+        });
+    </script>
+</body>
+</html>
+
+

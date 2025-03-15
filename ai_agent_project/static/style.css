@@ -1,0 +1,171 @@
+/* ======== General Body Styling ======== */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #F0F4F8, #D9E2EC); /* Soft gradient for light mode */
+}
+
+/* ======== Dark Mode ======== */
+body.dark-mode {
+    background: #1E1E1E;
+    color: #ffffff;
+}
+
+/* ======== Chat Container ======== */
+.chat-container {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Dark mode chat container */
+body.dark-mode .chat-container {
+    background: #2C2C2C;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ======== Header ======== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #007bff;
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+/* Dark mode header */
+body.dark-mode .header {
+    background: #1F1F1F;
+}
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* ======== Chat Box ======== */
+#chat-box {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 300px;
+    border-bottom: 1px solid #ccc;
+    background: #f1f1f1;
+}
+
+/* Dark mode chat box */
+body.dark-mode #chat-box {
+    background: #1E1E1E;
+    border-bottom: 1px solid #555;
+}
+
+/* ======== Messages ======== */
+.message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+/* User message */
+.user-message {
+    background: #007bff;
+    color: white;
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+/* Dark mode user message */
+body.dark-mode .user-message {
+    background: #0056b3;
+}
+
+/* AI message */
+.ai-message {
+    background: #e5e5e5;
+    color: black;
+    align-self: flex-start;
+}
+
+/* Dark mode AI message */
+body.dark-mode .ai-message {
+    background: #333;
+    color: white;
+}
+
+/* ======== Input Area ======== */
+.input-area {
+    display: flex;
+    border-top: 1px solid #ccc;
+    background: #ffffff;
+}
+
+/* Dark mode input area */
+body.dark-mode .input-area {
+    background: #2C2C2C;
+    border-top: 1px solid #555;
+}
+
+/* Input field */
+input[type="text"] {
+    flex-grow: 1;
+    border: none;
+    padding: 15px;
+    font-size: 1rem;
+    outline: none;
+    background: none;
+    color: inherit;
+}
+
+/* Send button */
+button {
+    border: none;
+    background: #007bff;
+    color: white;
+    padding: 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+/* Button hover effect */
+button:hover {
+    background: #0056b3;
+}
+
+/* ======== Loading Indicator ======== */
+#loading-indicator {
+    padding: 10px;
+    text-align: center;
+    font-style: italic;
+    color: #007bff;
+}
+
+/* Dark mode loading indicator */
+body.dark-mode #loading-indicator {
+    color: #00D1FF;
+}
+
+/* Hide by default */
+.hidden {
+    display: none;
+}
+
+
+
